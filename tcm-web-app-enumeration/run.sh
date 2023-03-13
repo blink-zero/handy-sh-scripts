@@ -57,8 +57,8 @@ fi
 
 subjack -w $url/recon/final.txt -t 100 -timeout 30 -ssl -c ~/go/src/github.com/haccer/subjack/fingerprints.json -v 3 -o $url/recon/potential_takeovers/potential_takeovers.txt
 
-echo "[+] Scanning for open ports..."
-nmap -iL $url/recon/httprobe/alive.txt -T4 -oA $url/recon/scans/scanned.txt
+#echo "[+] Scanning for open ports..."
+#nmap -iL $url/recon/httprobe/alive.txt -T4 -oA $url/recon/scans/scanned.txt
 
 echo "[+] Scraping wayback data..."
 cat $url/recon/final.txt | waybackurls >> $url/recon/wayback/wayback_output.txt
@@ -98,5 +98,6 @@ rm $url/recon/wayback/extensions/jsp1.txt
 rm $url/recon/wayback/extensions/json1.txt
 rm $url/recon/wayback/extensions/php1.txt
 rm $url/recon/wayback/extensions/aspx1.txt
-#echo "[+] Running eyewitness against all compiled domains..."
-#python3 EyeWitness/EyeWitness.py --web -f $url/recon/httprobe/alive.txt -d $url/recon/eyewitness --resolve
+
+echo "[+] Running eyewitness against all compiled domains..."
+python3 EyeWitness/EyeWitness.py --web -f $url/recon/httprobe/alive.txt -d $url/recon/eyewitness --resolve
