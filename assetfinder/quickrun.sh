@@ -3,10 +3,10 @@
 url=$1
 
 if [! -d "$url"];then
-      makedir $url
+      mkdir $url
 fi
 if [! -d "$url/recon"];then
-      makedir $url/recon
+      mkdir $url/recon
 fi
 
 echo "[+] Harvesting subdomains with assetfinder..."
